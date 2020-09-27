@@ -1,7 +1,19 @@
 import React from 'react'
 import { View, Platform, Button } from 'react-native'
+import PropTypes from 'prop-types'
 
-const ListItem = ({ title, type }) => {
+import { storeItem } from '../../../../../store/ducks/item/actions'
+import { useDispatch } from 'react-redux'
+
+
+const ListItem = ({ title, type, onPress }) => {
+    const dispatch = useDispatch()
+
+    const saveItemAndOpenModal = () => {
+        dispatch(storeItem(title))
+        onPress()
+    }
+
     const backgroundColorSelector = (mealType) => {
         if (mealType === 'Cortes bovinos') return '#c02f0c'
         if (mealType === 'Cortes suinos') return '#dca9a8'
@@ -11,13 +23,18 @@ const ListItem = ({ title, type }) => {
     return (
         <View style={{
             backgroundColor: Platform.OS === 'ios' ? backgroundColorSelector(type) : 'none',
-            padding: 20,
             marginVertical: 8,
-            borderRadius: 4
+            borderRadius: 4,
+            height: 40,
         }}>
-            <Button title={title} color={Platform.OS === 'ios' ? '#000' : backgroundColorSelector(type)} />
+            <Button onPress={saveItemAndOpenModal} title={title} color={Platform.OS === 'ios' ? '#000' : backgroundColorSelector(type)} />
         </View >
     )
 }
+
+ListItem.propTypes = {
+    onPress: PropTypes.func.isRequired
+}
+
 
 export default ListItem

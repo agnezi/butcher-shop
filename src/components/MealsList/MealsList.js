@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     StyleSheet,
     Text,
     View,
     SectionList
 } from "react-native";
+import PropTypes from 'prop-types'
 import Constants from "expo-constants";
 
 import { ListItem } from './components'
@@ -25,13 +26,13 @@ const data = [
     },
 ];
 
-const MealsList = () => {
+const MealsList = ({ onListItemIsPressed }) => {
     return (
         <View style={styles.container}>
             <SectionList
                 sections={data}
                 keyExtractor={(item, index) => item + index}
-                renderItem={({ item, section }) => <ListItem title={item} type={section.title} />}
+                renderItem={({ item, section }) => <ListItem onPress={onListItemIsPressed} title={item} type={section.title} />}
                 renderSectionHeader={({ section: { title } }) => (
                     <Text style={styles.header}>{title}</Text>
                 )}
@@ -54,5 +55,9 @@ const styles = StyleSheet.create({
         fontSize: 24
     }
 })
+
+MealsList.propTypes = {
+    onListItemIsPressed: PropTypes.func.isRequired
+}
 
 export default MealsList
