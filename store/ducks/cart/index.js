@@ -2,7 +2,6 @@ import { actionTypes } from './types'
 
 const INITIAL_STATE = {
     items: [
-        { title: 'nda', price: 0 }
     ]
 }
 

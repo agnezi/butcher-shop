@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Platform, Modal, SafeAreaView, View, Text, StyleSheet, Button, TextInput } from 'react-native'
+import { Platform, Modal, SafeAreaView, View, Text, StyleSheet, Button, TextInput, Alert, KeyboardAvoidingView } from 'react-native'
 
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -25,55 +25,81 @@ const MealModal = ({ modalFlag, closeModal }) => {
             title: item,
             price: price
         }))
+        Alert.alert("Adicionado ao carrinho", "Você pode fechar essa janela", [
+            { text: 'Fechar', onPress: closeModalAndResetComponentState }
+        ])
+    }
+
+    const closeModalAndResetComponentState = () => {
+        setPrice(0)
+        setWeight(0)
+        closeModal()
     }
 
     return (
         <Modal animationType='slide' visible={modalFlag}>
-            <SafeAreaView style={styles.modalContainer}>
-                <Text>Item</Text>
-                <View style={{
-                    width: '100%',
-                }}>
-                    <TextInput
-                        onChangeText={(text) => setPrice(parseInt(text || 0))}
-                        returnKeyType="done"
-                        keyboardType="numeric"
-                        style={{
-                            height: 40, borderColor: 'gray', borderWidth: 1, padding: 10, borderTopWidth: 0, borderLeftWidth: 0,
-                            borderRightWidth: 0
-                        }}
-                        placeholder='Preço K/g' />
-                    <TextInput
-                        onChangeText={(text) => setWeight(parseInt(text || 0))}
-                        returnKeyType="done"
-                        keyboardType="numeric"
-                        style={{
-                            height: 40, borderColor: 'gray', borderWidth: 1, padding: 10, borderTopWidth: 0, borderLeftWidth: 0,
-                            borderRightWidth: 0
-                        }}
-                        placeholder='Peso (gr)' />
+            <KeyboardAvoidingView
+                behavior={Platform.OS == "ios" ? "padding" : "height"}
+                style={{ flex: 1 }}
+            >
+                <SafeAreaView style={styles.modalContainer}>
+                    <View style={{
+                        flexDirection: 'row',
+                        justifyContent: 'flex-end'
+                    }}>
+                        <View style={{
+                            backgroundColor: Platform.OS === 'ios' ? '#c02f0c' : 'none',
+                            marginVertical: 8,
+                            borderRadius: 4,
+                            width: '20%',
+                        }}>
+                            <Button onPress={closeModalAndResetComponentState} title={'Fechar'} color={Platform.OS === 'ios' ? '#000' : '#c02f0c'} />
+                        </View >
+                    </View>
+                    <View style={{
+                        flex: 1,
+                        justifyContent: 'space-around', alignItems: 'center',
+                    }}>
 
-                </View>
-                <Text>{total}</Text>
-                <View style={{
-                    backgroundColor: Platform.OS === 'ios' ? '#c02f0c' : 'none',
-                    marginVertical: 8,
-                    borderRadius: 4,
-                    height: 40
-                }}>
+                        <Text>Item</Text>
+                        <View style={{ width: '100%' }}>
 
-                    <Button onPress={closeModal} title={'Cancelar'} color={Platform.OS === 'ios' ? '#000' : '#c02f0c'} />
-                </View >
-                <View style={{
-                    backgroundColor: Platform.OS === 'ios' ? '#6caa1b' : 'none',
-                    marginVertical: 8,
-                    borderRadius: 4,
-                    height: 40
-                }}>
+                            <TextInput
+                                onChangeText={(text) => setPrice(parseInt(text || 0))}
+                                returnKeyType="done"
+                                keyboardType="numeric"
+                                style={{
+                                    height: 40, borderColor: 'gray', borderWidth: 1, padding: 10, borderTopWidth: 0, borderLeftWidth: 0,
+                                    borderRightWidth: 0
+                                }}
+                                placeholder='Preço K/g' />
+                        </View>
+                        <View style={{ width: '100%' }}>
 
-                    <Button onPress={addItemToCart} title={'Adicionar'} color={Platform.OS === 'ios' ? '#000' : '#6caa1b'} />
-                </View >
-            </SafeAreaView>
+                            <TextInput
+                                onChangeText={(text) => setWeight(parseInt(text || 0))}
+                                returnKeyType="done"
+                                keyboardType="numeric"
+                                style={{
+                                    height: 40, borderColor: 'gray', borderWidth: 1, padding: 10, borderTopWidth: 0, borderLeftWidth: 0,
+                                    borderRightWidth: 0
+                                }}
+                                placeholder='Peso (gr)' />
+                        </View>
+
+                        <Text style={{ fontSize: 40 }}>{total}</Text>
+                        <View style={{
+                            backgroundColor: Platform.OS === 'ios' ? '#6caa1b' : 'none',
+                            marginVertical: 8,
+                            borderRadius: 4,
+                            height: 40
+                        }}>
+
+                            <Button onPress={addItemToCart} title={'Adicionar'} color={Platform.OS === 'ios' ? '#000' : '#6caa1b'} />
+                        </View >
+                    </View>
+                </SafeAreaView>
+            </KeyboardAvoidingView>
         </Modal>
     )
 }
@@ -81,8 +107,6 @@ const MealModal = ({ modalFlag, closeModal }) => {
 const styles = StyleSheet.create({
     modalContainer: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
     }
 })
 
