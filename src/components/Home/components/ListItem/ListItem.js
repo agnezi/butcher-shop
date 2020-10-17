@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Platform, Button } from 'react-native'
 import PropTypes from 'prop-types'
 
-import { storeItem } from '../../../../../store/ducks/item/actions'
+import { storeItem } from '../../../../store/ducks/item/actions'
 import { useDispatch } from 'react-redux'
 
 
@@ -20,6 +20,12 @@ const ListItem = ({ title, type, onPress }) => {
         if (mealType === 'Cortes de aves') return '#cd8a3d'
         return '#f9c2ff'
     }
+    const textColorSelector = (mealType) => {
+        if (mealType === 'Cortes bovinos') return '#fff'
+        if (mealType === 'Cortes suinos') return '#000'
+        if (mealType === 'Cortes de aves') return '#000'
+        return '#f9c2ff'
+    }
     return (
         <View style={{
             backgroundColor: Platform.OS === 'ios' ? backgroundColorSelector(type) : 'none',
@@ -27,7 +33,7 @@ const ListItem = ({ title, type, onPress }) => {
             borderRadius: 4,
             height: 40,
         }}>
-            <Button onPress={saveItemAndOpenModal} title={title} color={Platform.OS === 'ios' ? '#000' : backgroundColorSelector(type)} />
+            <Button onPress={saveItemAndOpenModal} title={title} color={Platform.OS === 'ios' ? textColorSelector(type) : backgroundColorSelector(type)} />
         </View >
     )
 }
