@@ -22,6 +22,7 @@ const MealModal = ({ modalFlag, closeModal }) => {
 
 	const addItemToCart = () => {
 		dispatch(addToCart({
+			key: Date.now(),
 			title: item,
 			price: price
 		}))
@@ -44,28 +45,15 @@ const MealModal = ({ modalFlag, closeModal }) => {
 			>
 				<SafeAreaView style={styles.modalContainer}>
 					<View style={{
-						flexDirection: 'row',
-						justifyContent: 'flex-end'
-					}}>
-						<View style={{
-							backgroundColor: Platform.OS === 'ios' ? '#c02f0c' : 'none',
-							marginVertical: 8,
-							borderRadius: 4,
-							width: '20%',
-						}}>
-							<Button onPress={closeModalAndResetComponentState} title={'Fechar'} color={Platform.OS === 'ios' ? '#fff' : '#c02f0c'} />
-						</View >
-					</View>
-					<View style={{
 						flex: 1,
 						justifyContent: 'space-around', alignItems: 'center',
 					}}>
-
 						<Text style={{
 							fontSize: 24
 						}}>{item}</Text>
 						<View style={{ width: '100%' }}>
 							<TextInput
+								autoFocus
 								onChangeText={(text) => setWeight(parseInt(text || 0))}
 								returnKeyType="done"
 								style={styles.input}
@@ -80,17 +68,28 @@ const MealModal = ({ modalFlag, closeModal }) => {
 								style={styles.input}
 								placeholder='Preço K/g' />
 						</View>
-
-						<Text style={{ fontSize: 40 }}>{total}</Text>
+						<View>
+							<Text style={{ fontSize: 40 }}>{total}</Text>
+						</View>
 						<View style={{
-							backgroundColor: Platform.OS === 'ios' ? '#6caa1b' : 'none',
-							marginVertical: 8,
-							borderRadius: 4,
-							height: 40
+							flexDirection: 'row',
+							justifyContent: 'space-around',
+							width: '100%',
+							alignItems: 'center'
 						}}>
-
-							<Button onPress={addItemToCart} title={'Adicionar'} color={Platform.OS === 'ios' ? '#000' : '#6caa1b'} />
-						</View >
+							<View style={{
+								backgroundColor: Platform.OS === 'ios' ? '#6caa1b' : 'none',
+								borderRadius: 4,
+							}}>
+								<Button onPress={addItemToCart} title={'Adicionar'} color={Platform.OS === 'ios' ? '#000' : '#6caa1b'} />
+							</View >
+							<View style={{
+								backgroundColor: Platform.OS === 'ios' ? '#c02f0c' : 'none',
+								borderRadius: 4,
+							}}>
+								<Button onPress={closeModalAndResetComponentState} title={'Cancelar'} color={Platform.OS === 'ios' ? '#000' : '#c02f0c'} />
+							</View >
+						</View>
 					</View>
 				</SafeAreaView>
 			</KeyboardAvoidingView>

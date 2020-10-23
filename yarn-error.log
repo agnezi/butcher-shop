@@ -1,29 +1,29 @@
 Arguments: 
-  /home/tkoff0110/.nvm/versions/node/v12.18.4/bin/node /usr/share/yarn/bin/yarn.js add babylu@Project: ~$ yarn add babel-plugin-root-import -D
+  /home/agnezi/.nvm/versions/node/v12.19.0/bin/node /usr/share/yarn/bin/yarn.js add -D @react-navigation
 
 PATH: 
-  /home/tkoff0110/.nvm/versions/node/v12.18.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Python27/:/mnt/c/Python27/Scripts:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/Java/jdk1.8.0_211/bin:/mnt/c/Program Files (x86)/Yarn/bin/:/mnt/c/Users/jonas/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/jonas/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/jonas/AppData/Roaming/npm:/mnt/c/Users/jonas/AppData/Local/Android/Sdk/platform-tools:/mnt/c/Users/jonas/AppData/Local/Yarn/bin:/mnt/c/Users/jonas/AppData/Local/Android/Sdk/tools:/mnt/c/Users/jonas/AppData/Local/Android/Sdk/tools/bin:/mnt/c/Users/jonas/AppData/Local/Android/Sdk/emulator:/snap/bin
+  /home/agnezi/.nvm/versions/node/v12.19.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Python27/:/mnt/c/Python27/Scripts:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/Java/jdk1.8.0_211/bin:/mnt/c/Program Files (x86)/Yarn/bin/:/mnt/c/Users/jonas/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/jonas/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/jonas/AppData/Roaming/npm:/mnt/c/Users/jonas/AppData/Local/Android/Sdk/platform-tools:/mnt/c/Users/jonas/AppData/Local/Yarn/bin:/mnt/c/Users/jonas/AppData/Local/Android/Sdk/tools:/mnt/c/Users/jonas/AppData/Local/Android/Sdk/tools/bin:/mnt/c/Users/jonas/AppData/Local/Android/Sdk/emulator:/snap/bin
 
 Yarn version: 
   1.22.5
 
 Node version: 
-  12.18.4
+  12.19.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/babylu: Not found
-      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66988:18)
+  Error: https://registry.yarnpkg.com/@react-navigation: Request "https://registry.yarnpkg.com/@react-navigation" returned a 405
+      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66997:18)
       at Request.self.callback (/usr/share/yarn/lib/cli.js:140749:22)
-      at Request.emit (events.js:315:20)
+      at Request.emit (events.js:314:20)
       at Request.<anonymous> (/usr/share/yarn/lib/cli.js:141721:10)
-      at Request.emit (events.js:315:20)
+      at Request.emit (events.js:314:20)
       at IncomingMessage.<anonymous> (/usr/share/yarn/lib/cli.js:141643:12)
-      at Object.onceWrapper (events.js:421:28)
-      at IncomingMessage.emit (events.js:327:22)
-      at endReadableNT (_stream_readable.js:1220:12)
+      at Object.onceWrapper (events.js:420:28)
+      at IncomingMessage.emit (events.js:326:22)
+      at endReadableNT (_stream_readable.js:1223:12)
       at processTicksAndRejections (internal/process/task_queues.js:84:21)
 
 npm manifest: 

@@ -13,9 +13,10 @@ const reducer = (state = INITIAL_STATE, action) => {
                 items: [...state.items, action.payload]
             }
         case actionTypes.REMOVE_FROM_CART:
+            const newState = state.items.filter(item => item.key !== action.payload)
             return {
                 ...state,
-                items: []
+                items: newState
             }
         default:
             return state;
