@@ -8,7 +8,7 @@ import {
 import PropTypes from 'prop-types'
 import Constants from "expo-constants";
 
-import { ListItem } from '../../components'
+import { ListItem } from '../ListItem'
 
 const data = [
 	{

@@ -15,7 +15,7 @@ const MealModal = ({ modalFlag, closeModal }) => {
 	const [total, setTotal] = useState(0)
 
 	useEffect(() => {
-		const totalPrice = (weight * price) / 1000
+		const totalPrice = (weight * price) / 1000.00
 		const formatedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(totalPrice)
 		setTotal(formatedPrice)
 	}, [weight, price])
@@ -35,6 +35,16 @@ const MealModal = ({ modalFlag, closeModal }) => {
 		setPrice(0)
 		setWeight(0)
 		closeModal()
+	}
+
+	const handlePrice = (text) => {
+		if (typeof text !== 'number') {
+			const formatedPrice = text.replace(',', '.')
+			const intPrice = parseFloat(formatedPrice)
+			setPrice(intPrice)
+		} else {
+			setPrice(0)
+		}
 	}
 
 	return (
@@ -62,7 +72,7 @@ const MealModal = ({ modalFlag, closeModal }) => {
 						</View>
 						<View style={{ width: '100%' }}>
 							<TextInput
-								onChangeText={(text) => setPrice(parseInt(text || 0))}
+								onChangeText={(text) => handlePrice(text || 0)}
 								returnKeyType="done"
 								keyboardType="numeric"
 								style={styles.input}
